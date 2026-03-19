@@ -37,6 +37,8 @@ namespace Main
                 Destroy(gameObject);
                 return;
             }
+
+            itemService = new ItemService(itemsToFind);
         }
 
         private void Start()
@@ -59,7 +61,6 @@ namespace Main
         {
             SetGameState(GameState.Playing);
 
-            ItemService itemService = new(itemsToFind);
             itemService.PopulateItems();
         }
 

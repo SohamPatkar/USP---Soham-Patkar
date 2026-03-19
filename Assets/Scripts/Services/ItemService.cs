@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Items
 {
@@ -24,10 +25,13 @@ namespace Items
         public void PopulateItems()
         {
             NumberOfTotalItems?.Invoke(items.Count);
+            Debug.Log("PopulateItems CALLED");
+
 
             foreach (var item in items)
             {
                 PopulateItemsUi?.Invoke(item.ItemName);
+                Debug.Log($"Sending item: {item.ItemName}");
             }
         }
     }

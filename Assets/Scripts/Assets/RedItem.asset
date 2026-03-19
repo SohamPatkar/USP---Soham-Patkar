@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fca78137d557b9428897c8025493d96, type: 3}
   m_Name: RedItem
   m_EditorClassIdentifier: 
-  itemId: '#3'
-  itemName: RedItem
-  itemIcon: {fileID: 4005457989275392647, guid: f5bb1b17bf6717b4e859aa5da8cdb61d, type: 3}
+  ItemId: '#3'
+  ItemName: Red
+  ItemIcon: {fileID: 4005457989275392647, guid: f5bb1b17bf6717b4e859aa5da8cdb61d, type: 3}
+  ItemState: 0

@@ -1,8 +1,6 @@
 using TMPro;
 using UnityEngine;
 using Main;
-using System;
-using System.Text;
 
 namespace UI
 {
@@ -11,7 +9,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI timerText;
         [SerializeField] private Transform itemListContainer;
         [SerializeField] private TextMeshProUGUI numberOfTotalItems;
-        
+        [SerializeField] private GameObject itemUIElementPrefab;
 
         private void Start()
         {
@@ -39,8 +37,10 @@ namespace UI
 
         private void PopulateItemsUI(string item)
         {
-            TextMeshProUGUI itemsText = Instantiate(gameObject.AddComponent<TextMeshProUGUI>(), itemListContainer);
-            itemsText.text = item;
+            Debug.Log("UI CALLED");
+
+            GameObject itemsText = Instantiate(itemUIElementPrefab, itemListContainer);
+            itemsText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = item;
         }
 
 
