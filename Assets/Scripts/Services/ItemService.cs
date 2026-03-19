@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using Object = UnityEngine.GameObject;
+
 
 namespace Items
 {
@@ -13,13 +16,39 @@ namespace Items
     public class ItemService
     {
         private List<ItemData> items = new();
+        private List<GameObject> spawnedItems = new();
 
         public event Action<string> PopulateItemsUi;
         public event Action<int> NumberOfTotalItems;
 
+        public Vector2 minBounds = new Vector2(-8f, -4f);
+        public Vector2 maxBounds = new Vector2(8f, 4f);
+
+        public void SpawnRandomPositions()
+        {
+            foreach (var item in items)
+            {
+                float x = UnityEngine.Random.Range(minBounds.x, maxBounds.x);
+                float y = UnityEngine.Random.Range(minBounds.y, maxBounds.y);
+                GameObject spawnedItem = Object.Instantiate(item.ItemIcon, new Vector3(x, y, 0f), quaternion.identity);
+                spawnedItems.Add(spawnedItem);
+            }
+        }
+
+        public void ClearItems()
+        {
+            foreach (var item in spawnedItems)
+            {
+                Object.Destroy(item);
+            }
+
+            spawnedItems.Clear();
+            items.Clear();
+        }
+
         public ItemService(List<ItemData> itemsToFind)
         {
-            items = itemsToFind;
+            items = new List<ItemData>(itemsToFind);
         }
 
         public void PopulateItems()
@@ -31,8 +60,11 @@ namespace Items
             foreach (var item in items)
             {
                 PopulateItemsUi?.Invoke(item.ItemName);
+                
                 Debug.Log($"Sending item: {item.ItemName}");
             }
+
+            SpawnRandomPositions();
         }
     }
 }

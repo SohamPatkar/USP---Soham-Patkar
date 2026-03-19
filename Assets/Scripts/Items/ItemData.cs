@@ -9,11 +9,6 @@ namespace Items
         public string ItemName;
         public GameObject ItemIcon;
         public ItemState ItemState = ItemState.NotFound;
-
-        public void ChangeItemState(ItemState itemState)
-        {
-            ItemState = itemState;
-        }
     }
 }
 
