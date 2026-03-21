@@ -8,6 +8,7 @@ namespace Items
         public string ItemId;
         public string ItemName;
         public GameObject ItemIcon;
+        public Sprite ItemSprite;
         public ItemState ItemState = ItemState.NotFound;
     }
 }

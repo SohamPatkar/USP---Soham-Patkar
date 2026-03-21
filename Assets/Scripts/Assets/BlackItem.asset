@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fca78137d557b9428897c8025493d96, type: 3}
+  m_Name: BlackItem
+  m_EditorClassIdentifier: 
+  ItemId: '#5'
+  ItemName: BlackItem
+  ItemIcon: {fileID: 1029015939074566836, guid: c1b43d4d16c701945a72843b1ccb092f, type: 3}
+  ItemState: 0

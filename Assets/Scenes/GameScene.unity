@@ -286,7 +286,7 @@ MonoBehaviour:
   timerText: {fileID: 1671053042}
   itemListContainer: {fileID: 1272245666}
   numberOfTotalItems: {fileID: 1584018754}
-  itemUIElementPrefab: {fileID: 1068478614044778001, guid: e8e6b9440840e1a4daa4b02fd2d5199d, type: 3}
+  itemUIElementPrefab: {fileID: 3293970879288769751, guid: 93f39238c946a6847a34b7925eed1b51, type: 3}
 --- !u!1 &221219322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,8 +1199,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -338, y: -181}
-  m_SizeDelta: {x: 600, y: 300}
+  m_AnchoredPosition: {x: -338, y: -266.25012}
+  m_SizeDelta: {x: 600, y: 470.5002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &913048240
 MonoBehaviour:
@@ -1394,8 +1394,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -25}
-  m_SizeDelta: {x: 500, y: 239.38}
+  m_AnchoredPosition: {x: 0, y: -21.8692}
+  m_SizeDelta: {x: 500, y: 233.1183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1272245667
 MonoBehaviour:
@@ -1415,7 +1415,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: -45.6
+  m_Spacing: 0.9
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1753,7 +1753,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b883594c28615e408e65f1ce9e65f1f, type: 2}
   - {fileID: 11400000, guid: f3a14763b5e6d6a4a820dae4b440b314, type: 2}
   - {fileID: 11400000, guid: 2586b55b503fa4340b69df8c77da2a4c, type: 2}
-  gameTime: 5
+  - {fileID: 11400000, guid: a2d92441d993e734a9fb4c8e0c422720, type: 2}
+  - {fileID: 11400000, guid: 1221500d6d8053e4dac57d65992fc8e2, type: 2}
+  - {fileID: 11400000, guid: f68ec72bdbd848940a12dc4e58a11b2d, type: 2}
+  gameTime: 50
   playerGameObject: {fileID: 145884556}
   endPanel: {fileID: 221219322}
   restartButton: {fileID: 278949372}

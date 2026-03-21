@@ -18,7 +18,7 @@ namespace Items
         private List<ItemData> items = new();
         private List<GameObject> spawnedItems = new();
 
-        public event Action<string> PopulateItemsUi;
+        public event Action<string , Sprite> PopulateItemsUi;
         public event Action<int> NumberOfTotalItems;
 
         public Vector2 minBounds = new Vector2(-8f, -4f);
@@ -29,9 +29,24 @@ namespace Items
             foreach (var item in items)
             {
                 float x = UnityEngine.Random.Range(minBounds.x, maxBounds.x);
-                float y = UnityEngine.Random.Range(minBounds.y, maxBounds.y);
+                float y = UnityEngine.Random.Range(minBounds.y, maxBounds.y);            
+
                 GameObject spawnedItem = Object.Instantiate(item.ItemIcon, new Vector3(x, y, 0f), quaternion.identity);
+                
                 spawnedItems.Add(spawnedItem);
+            }
+        }
+
+        public void RemoveItem(string itemNae)
+        {
+            foreach (var item in spawnedItems)
+            {
+                if (item.GetComponent<Item>().itemName == itemNae)
+                {
+                    spawnedItems.Remove(item);
+                    Object.Destroy(item);
+                    break;
+                }
             }
         }
 
@@ -46,6 +61,11 @@ namespace Items
             items.Clear();
         }
 
+        public List<GameObject> GetSpawnedItems()
+        {
+            return spawnedItems;
+        }
+
         public ItemService(List<ItemData> itemsToFind)
         {
             items = new List<ItemData>(itemsToFind);
@@ -56,10 +76,9 @@ namespace Items
             NumberOfTotalItems?.Invoke(items.Count);
             Debug.Log("PopulateItems CALLED");
 
-
             foreach (var item in items)
             {
-                PopulateItemsUi?.Invoke(item.ItemName);
+                PopulateItemsUi?.Invoke(item.ItemName,item.ItemIcon.GetComponent<SpriteRenderer>().sprite);
                 
                 Debug.Log($"Sending item: {item.ItemName}");
             }

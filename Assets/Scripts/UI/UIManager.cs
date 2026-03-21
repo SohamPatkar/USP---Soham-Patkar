@@ -1,8 +1,10 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using Main;
 using Items;
+using Unity.VisualScripting;
 
 namespace UI
 {
@@ -14,6 +16,7 @@ namespace UI
         [SerializeField] private GameObject itemUIElementPrefab;
 
         private Dictionary<string, GameObject> items = new();
+        private List<GameObject> spawnedItems = new();
         private ItemService currentService;
 
         private void Start()
@@ -42,16 +45,40 @@ namespace UI
             timerText.text = time.ToString();
         }
 
-        private void PopulateItemsUI(string item)
+        private void PopulateItemsUI(string item, Sprite itemSprite)
         {
             Debug.Log("UI CALLED");
 
             if (!items.ContainsKey(item))
             {
-                GameObject itemsText = Instantiate(itemUIElementPrefab, itemListContainer);
-                itemsText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = item;
-                itemsText.name = item;
-                items.Add(item, itemsText);
+                GameObject itemsIcon = Instantiate(itemUIElementPrefab, itemListContainer);
+                itemsIcon.GetComponent<Image>().sprite = itemSprite;
+                itemsIcon.name = item;
+                items.Add(item, itemsIcon);
+                AddListenersToHighlight();
+            }
+        }
+
+        private void AddListenersToHighlight()
+        {
+            foreach( var item in items)
+            {
+                item.Value.GetComponent<Button>().onClick.AddListener(() => HighlightItem(item.Key));
+            }
+        }
+
+        private void HighlightItem(string itemName)
+        {
+            spawnedItems = GameManager.Instance.GetItemService().GetSpawnedItems();
+
+            foreach (var item in spawnedItems)
+            {
+                if (item.GetComponent<Item>().itemName == itemName)
+                {
+                    var color = item.GetComponent<SpriteRenderer>().color;
+                    color.a = 0.1f; 
+                    item.GetComponent<SpriteRenderer>().color = color;
+                }
             }
         }
 
@@ -86,6 +113,7 @@ namespace UI
                 GameObject item = items[itemName];
                 Destroy(item);
                 items.Remove(itemName);
+                GameManager.Instance.GetItemService().RemoveItem(itemName);
                 UpdateTotalItemsUI(items.Count);
 
                 if (items.Count == 0)
