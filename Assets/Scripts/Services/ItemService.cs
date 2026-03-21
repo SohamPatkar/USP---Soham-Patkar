@@ -37,11 +37,11 @@ namespace Items
             }
         }
 
-        public void RemoveItem(string itemNae)
+        public void RemoveItem(string itemName)
         {
             foreach (var item in spawnedItems)
             {
-                if (item.GetComponent<Item>().itemName == itemNae)
+                if (item.GetComponent<Item>().itemName == itemName)
                 {
                     spawnedItems.Remove(item);
                     Object.Destroy(item);
